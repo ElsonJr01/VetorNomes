@@ -1,28 +1,27 @@
-//Vetor de nomes
-#include<stdio.h>
+#include <stdio.h>
+#include <string.h>
+
 void entraNomes(char vet[5][20]);
-void main(void){
-    //char *nome;
-	int i, x,y;
-	printf("Entre com linha=");
-	scanf("%d",&x);
-	printf("\nEntre com coluna=");
-	scanf("%d",&y);
-	char nome[x][y];
-	entraNomes(nome[x]);
-	
-	
-    printf("\nImprime os nomes no vetor de nomes\n");
-    for(i=0;i<5;i++){
-    	printf("%s\n",nome[i]);
-	}
+
+void main(void) {
+    int i;
+    char nome[5][20]; 
+
+    entraNomes(nome);
+
+    printf("\nImprime os nomes no vetor de nomes:\n");
+    for (i = 0; i < 5; i++) {
+        printf("%s\n", nome[i]);
+    }
 }
 
-void entraNomes(char vet[]){
-	int i;
-	printf("Entra com os nomes\n");
-	for(i=0; i<2; i++){
-		printf("\nEntre com nome%d=",i+1);
-		gets(vet[i]);
-	}	
+void entraNomes(char vet[5][20]) {
+    int i;
+    printf("Entra com os nomes:\n");
+    for (i = 0; i < 5; i++) {
+        printf("\nEntre com o nome %d: ", i + 1);
+        fgets(vet[i], 20, stdin);
+        vet[i][strcspn(vet[i], "\n")] = '\0'; 
+    }
 }
+
